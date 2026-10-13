@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | CampusCare</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/dashboard.js" defer></script>
+</head>
+<body class="dashboard-page">
+  <nav class="navbar dashboard-nav">
+    <a class="brand" href="/">CampusCare<span>.</span></a>
+    <div class="nav-user">
+      <span id="userName" class="user-name">Loading account...</span>
+      <button id="logoutButton" class="button button-secondary" type="button">
+        Sign out
+      </button>
+    </div>
+  </nav>
+
+  <main class="dashboard-container">
+    <section class="welcome-row">
+      <div>
+        <span class="eyebrow">CAMPUS MAINTENANCE</span>
+        <h1>Your dashboard<span>.</span></h1>
+        <p class="muted">Report issues and follow maintenance progress.</p>
+      </div>
+      <span id="roleBadge" class="role-badge">Loading role</span>
+    </section>
+
+    <div id="pageMessage" class="message" role="status"
+         aria-live="polite" hidden></div>
+
+    <section id="submitSection" class="panel">
+      <div class="panel-heading">
+        <div>
+          <span class="eyebrow">NEW REQUEST</span>
+          <h2>Report a maintenance issue</h2>
+        </div>
+        <span class="panel-icon">＋</span>
+      </div>
+
+      <form id="complaintForm">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="title">Complaint title</label>
+            <input id="title" name="title" required maxlength="200"
+                   placeholder="e.g. Broken classroom fan">
+          </div>
+
+          <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" name="category" required>
+              <option value="">Select a category</option>
+              <option value="Electrical">Electrical</option>
+              <option value="Plumbing">Plumbing</option>
+              <option value="Furniture">Furniture</option>
+              <option value="Cleaning">Cleaning</option>
+              <option value="IT">IT and Networking</option>
+              <option value="Civil">Building and Civil</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="location">Campus location</label>
+            <input id="location" name="location" required maxlength="200"
+                   placeholder="e.g. Block A, Room 204">
+          </div>
+
+          <div class="form-group">
+            <label for="priority">Priority</label>
+            <select id="priority" name="priority" required>
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+              <option value="urgent">Urgent</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="description">Describe the issue</label>
+            <textarea id="description" name="description" required
+                      maxlength="5000" rows="4"
+                      placeholder="Explain what happened and where..."></textarea>
+          </div>
+        </div>
+
+        <button id="complaintSubmit" class="button button-primary" type="submit">
+          Submit complaint →
+        </button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <div>
+          <span class="eyebrow">REQUEST HISTORY</span>
+          <h2>Complaints</h2>
+          <p class="muted">Review the latest maintenance requests.</p>
+        </div>
+        <button id="refreshButton" class="button button-secondary" type="button">
+          ↻ Refresh
+        </button>
+      </div>
+
+      <div id="complaintList" class="complaint-list">
+        <p class="muted">Loading complaints...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    CampusCare · Campus Maintenance Management System
+  </footer>
+</body>
+</html>
